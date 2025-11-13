@@ -1,0 +1,4 @@
+geo_id,success,error
+GSE38642,False,Download failed due to '403 Client Error: Forbidden for url: http://ftp.ncbi.nlm.nih.gov/geo/series/GSE38nnn/GSE38642/soft/GSE38642_family.soft.gz'. ID could be incorrect or the data might not be public yet.
+GSE25724,False,Download failed due to '403 Client Error: Forbidden for url: http://ftp.ncbi.nlm.nih.gov/geo/series/GSE25nnn/GSE25724/soft/GSE25724_family.soft.gz'. ID could be incorrect or the data might not be public yet.
+GSE9006,False,Download failed due to '403 Client Error: Forbidden for url: http://ftp.ncbi.nlm.nih.gov/geo/series/GSE9nnn/GSE9006/soft/GSE9006_family.soft.gz'. ID could be incorrect or the data might not be public yet.
