@@ -80,7 +80,8 @@ def parse_series_matrix_robust(filepath):
             line_count += 1
             line = line.strip()
 
-            if not line or line.startswith('"'):
+            # Skip empty lines (but not when in expression table!)
+            if not line:
                 continue
 
             # Series metadata
@@ -103,7 +104,15 @@ def parse_series_matrix_robust(filepath):
                         values_str = parts[1]
                         # Split by tab and clean quotes
                         values = [v.strip(' "') for v in values_str.split('\t')]
-                        sample_meta_raw[header] = values
+
+                        # For characteristics_ch1, concatenate multiple rows
+                        if 'characteristics' in header.lower() and header in sample_meta_raw:
+                            # Append to existing values
+                            for i, val in enumerate(values):
+                                if i < len(sample_meta_raw[header]):
+                                    sample_meta_raw[header][i] += ' | ' + val
+                        else:
+                            sample_meta_raw[header] = values
                 except Exception as e:
                     print(f"  ⚠️ Line {line_count}: Failed to parse sample metadata: {e}")
                     continue
@@ -211,19 +220,21 @@ def extract_labels_improved(sample_df, geo_id):
     # Check available columns
     print(f"    Available columns: {list(sample_df.columns[:5])}...")
 
-    # Diabetes patterns - EXPANDED
-    diabetes_patterns = [
-        r'\bt2d\b', r'\bt2dm\b', r'\bdiabetes\b', r'\bdiabetic\b',
-        r'type\s*2', r'type\s*ii', r'type2', r'typeii',
-        r'diabetes mellitus', r'dm\b', r'diabete'
+    # Control patterns - CHECK FIRST (more specific, look for values after colons)
+    control_patterns = [
+        r':\s*nd\b', r':\s*non-diabetic', r':\s*control',  # After colon (field values)
+        r'\bcontrol\b', r'\bnon-diabetic\b', r'\bnondiabetic\b',
+        r'non\s*diabetic', r'non-dm', r'no diabetes',
+        r'ctrl\b', r'normal glucose', r'\bhealthy\b'
     ]
 
-    # Control patterns - EXPANDED
-    control_patterns = [
-        r'\bcontrol\b', r'\bnon-diabetic\b', r'\bnondiabetic\b',
-        r'\bnd\b', r'\bnormal\b', r'\bhealthy\b',
-        r'non\s*diabetic', r'non-dm', r'no diabetes',
-        r'ctrl\b', r'normal glucose'
+    # Diabetes patterns - EXPANDED (look for values after colons first)
+    diabetes_patterns = [
+        r':\s*t2d\b', r':\s*t2dm\b', r':\s*type\s*2', r':\s*diabetic',  # After colon (field values)
+        r'\bt2d\b', r'\bt2dm\b',
+        r'(?<!non-)diabetic\b', r'(?<!non\s)diabetic\b',  # Don't match "non-diabetic"
+        r'type\s*2.*diabet', r'type\s*ii', r'type2', r'typeii',
+        r'diabetes mellitus', r'diabetic\s+(?!control)'
     ]
 
     labels = []
@@ -243,15 +254,30 @@ def extract_labels_improved(sample_df, geo_id):
 
         combined = ' '.join(text_parts).lower()
 
-        # Check patterns
-        has_diabetes = any(re.search(p, combined, re.IGNORECASE) for p in diabetes_patterns)
-        has_control = any(re.search(p, combined, re.IGNORECASE) for p in control_patterns)
+        # Check patterns - prioritize specific field values (after colons)
+        # Split patterns into high-priority (after colon) and low-priority (general)
+        high_pri_diabetes = [p for p in diabetes_patterns if p.startswith(r':\s')]
+        low_pri_diabetes = [p for p in diabetes_patterns if not p.startswith(r':\s')]
+        high_pri_control = [p for p in control_patterns if p.startswith(r':\s')]
+        low_pri_control = [p for p in control_patterns if not p.startswith(r':\s')]
 
-        # Decision logic
-        if has_diabetes and not has_control:
+        # Check high-priority patterns first (field values)
+        has_diabetes_high = any(re.search(p, combined, re.IGNORECASE) for p in high_pri_diabetes)
+        has_control_high = any(re.search(p, combined, re.IGNORECASE) for p in high_pri_control)
+
+        # Only check low-priority if high-priority didn't match
+        has_diabetes_low = any(re.search(p, combined, re.IGNORECASE) for p in low_pri_diabetes)
+        has_control_low = any(re.search(p, combined, re.IGNORECASE) for p in low_pri_control)
+
+        # Decision logic (prioritize specific field values)
+        if has_diabetes_high:
             label = 'Diabetes'
-        elif has_control and not has_diabetes:
+        elif has_control_high:
             label = 'Control'
+        elif has_control_low and not has_diabetes_low:
+            label = 'Control'
+        elif has_diabetes_low:
+            label = 'Diabetes'
         elif 'igt' in combined or 'impaired glucose' in combined:
             label = 'IGT'
         elif 't3c' in combined or 't3d' in combined:
