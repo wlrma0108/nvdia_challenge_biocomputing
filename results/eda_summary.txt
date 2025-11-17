@@ -1,0 +1,15 @@
+================================================================================
+EXPLORATORY DATA ANALYSIS SUMMARY
+================================================================================
+
+Total samples: 150
+Control samples: 75
+Diabetes samples: 75
+Number of features: 20000
+Features with mean > 0: 9941
+Control age (mean±std): 45.7±13.6
+Diabetes age (mean±std): 50.6±11.5
+Control BMI (mean±std): 23.8±2.9
+Diabetes BMI (mean±std): 29.8±4.2
+Control HbA1c (mean±std): 5.22±0.30
+Diabetes HbA1c (mean±std): 8.47±1.53

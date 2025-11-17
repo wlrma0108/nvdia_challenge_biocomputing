@@ -1,0 +1,51 @@
+gene,status,pathway,role,tissue,fold_change,direction
+GENE03674,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE08386,Novel,Unknown,To be characterized,Unknown,,Unknown
+INS,Known,Insulin signaling,Hormone production,pancreas,-2.5,Down
+SOD1,Known,Oxidative stress,Antioxidant,pancreas,-1.6,Down
+PDX1,Known,Beta cell function,Transcription factor,pancreas,-2.2,Down
+GENE01216,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE01388,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE04744,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE04948,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE05007,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE06855,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE08503,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE09215,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE09494,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE09992,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE10669,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE12248,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE12371,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE12571,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE13212,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE13260,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE13802,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE14312,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE16540,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE17006,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE17258,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE17635,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE17745,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE17886,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE18256,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE18487,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE19094,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE19124,Novel,Unknown,To be characterized,Unknown,,Unknown
+GCK,Known,Glucose metabolism,Glucose sensor,pancreas,-2.0,Down
+KCNJ11,Known,Beta cell function,Ion channel,pancreas,-1.4,Down
+RBP4,Known,Insulin resistance,Retinol binding,adipose,1.8,Up
+GENE00128,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE00671,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE00934,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE02114,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE02509,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE02535,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE02769,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE02931,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE03431,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE04268,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE04894,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE05016,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE06196,Novel,Unknown,To be characterized,Unknown,,Unknown
+GENE06462,Novel,Unknown,To be characterized,Unknown,,Unknown
