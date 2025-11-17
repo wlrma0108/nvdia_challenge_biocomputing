@@ -1,0 +1,6 @@
+pathway,gene_count,percentage,upregulated,downregulated,genes
+Beta cell function,2,33.3%,0,2,"PDX1, KCNJ11"
+Insulin signaling,1,16.7%,0,1,INS
+Oxidative stress,1,16.7%,0,1,SOD1
+Glucose metabolism,1,16.7%,0,1,GCK
+Insulin resistance,1,16.7%,1,0,RBP4
