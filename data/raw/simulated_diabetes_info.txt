@@ -1,0 +1,27 @@
+dataset_id: SIMULATED_DIABETES_001
+title: Simulated RNA Expression Data for Type 2 Diabetes Detection
+description: 
+        This is a simulated RNA expression dataset designed to mimic real diabetes biology.
+        The dataset includes known diabetes-related genes with realistic differential expression
+        patterns based on published literature.
+
+        Key features:
+        - 20,000 genes (probes)
+        - 150 samples (75 control, 75 diabetes)
+        - Blood tissue (whole blood)
+        - Known diabetes biomarkers included
+        - Realistic technical and biological variation
+        - Batch effects included
+
+        Known differentially expressed genes include:
+        - Insulin signaling: INS, INSR, IRS1, IRS2, AKT2
+        - Glucose metabolism: GCK, GLUT2, GLUT4, HK2
+        - Inflammation: TNF, IL6, IL1B, NFKB1
+        - Beta cell function: PDX1, NEUROD1
+        - And many more...
+        
+platform: Simulated (based on Illumina HumanHT-12 design)
+organism: Homo sapiens
+tissue: Whole blood
+n_samples: 150
+n_features: 20000
